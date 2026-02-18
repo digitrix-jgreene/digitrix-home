@@ -1,0 +1,506 @@
+<html lang="en" class="scroll-smooth" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Digitrix - Digital Transformation</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="6">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="7">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" vid="8">
+    <script vid="9">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            card: '#131B2C',
+                            accent: '#3B82F6',
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)',
+                        'mesh': 'radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(59, 130, 246, 0.15) 0px, transparent 50%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style vid="10">
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #60A5FA, #A78BFA, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4B5563;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white overflow-x-hidden min-h-screen flex flex-col" vid="11">
+
+    
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-dark/80 backdrop-blur-md border-b border-white/5" id="navbar" vid="12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8" vid="13">
+            <div class="flex items-center justify-between h-20" vid="14">
+                
+                <a href="#" class="flex items-center gap-2 group" vid="15">
+                    <div class="relative" vid="16">
+                        <svg class="w-10 h-10 text-blue-500 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="17">
+                            <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.132 20.177 10.244 17.814 10.04C17.443 6.643 14.536 4 11 4C7.134 4 4 7.134 4 11C1.79 11.233 0 13.15 0 15.5C0 18.067 1.95 20.18 4.5 20.45" stroke="url(#logo-gradient)" stroke-linecap="round" stroke-linejoin="round" vid="18"></path>
+                            <defs vid="19">
+                                <linearGradient id="logo-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse" vid="20">
+                                    <stop offset="0%" stop-color="#3B82F6" vid="21"></stop>
+                                    <stop offset="100%" stop-color="#EC4899" vid="22"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute -inset-1 bg-blue-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" vid="23"></div>
+                    </div>
+                    <span class="text-2xl font-display font-bold tracking-tight text-white" vid="24">Digitrix</span>
+                </a>
+
+                
+                <div class="hidden md:flex items-center space-x-8" vid="25">
+                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition-colors" vid="26">Home</a>
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-white transition-colors" vid="27">Services</a>
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-white transition-colors" vid="28">About</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-white text-brand-dark font-semibold text-sm hover:bg-gray-100 transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]" vid="29">
+                        Contact Us
+                    </a>
+                </div>
+
+                
+                <button class="md:hidden text-gray-300 hover:text-white" vid="30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="31">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" vid="32"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden" vid="33">
+        
+        <div class="absolute inset-0 bg-brand-dark" vid="34">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4" vid="35"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4" vid="36"></div>
+            
+            <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'100%25\' height=\'100%25\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cdefs%3E%3ClinearGradient id=\'g\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'0%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%233B82F6\'/%3E%3Cstop offset=\'50%25\' stop-color=\'%238B5CF6\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23EC4899\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'url(%23g)\' filter=\'blur(80px)\' opacity=\'0.5\'/%3E%3C/svg%3E'); background-size: cover;" vid="37"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full z-10 grid lg:grid-cols-2 gap-12 items-center" vid="38">
+            <div class="reveal" vid="39">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm" vid="40">
+                    <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" vid="41"></span>
+                    <span class="text-xs font-medium text-blue-200 tracking-wide uppercase" vid="42">Digital Transformation</span>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-display font-bold leading-tight mb-8" vid="43">
+                    Let's Get <br vid="44">
+                    <span class="gradient-text" vid="45">Digital!</span>
+                </h1>
+                <p class="text-xl text-gray-400 mb-10 max-w-lg leading-relaxed" vid="46">
+                    Together We Can Reimagine What's Possible. We build sustainable, cutting-edge digital solutions for the future.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4" vid="47">
+                    <a href="#services" class="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition-all duration-300 text-center" vid="48">
+                        Explore Portfolio
+                    </a>
+                    <a href="#about" class="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-center" vid="49">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="hidden lg:block relative h-[600px] reveal delay-200" vid="50">
+                 
+                 <div class="absolute inset-0 flex items-center justify-center" vid="51">
+                    <div class="relative w-full h-full" vid="52">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-500 to-pink-500 rounded-2xl rotate-12 blur-2xl opacity-40 animate-pulse" vid="53"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white/10 rounded-full animate-[spin_10s_linear_infinite]" vid="54"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" vid="55"></div>
+                        
+                        
+                        <div class="absolute top-20 right-20 p-6 bg-brand-card/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl animate-[float_4s_ease-in-out_infinite]" vid="56">
+                            <svg class="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="57"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" vid="58"></path></svg>
+                            <div class="w-24 h-2 bg-white/10 rounded mb-2" vid="59"></div>
+                            <div class="w-16 h-2 bg-white/10 rounded" vid="60"></div>
+                        </div>
+
+                        <div class="absolute bottom-32 left-10 p-6 bg-brand-card/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl animate-[float_5s_ease-in-out_infinite_1s]" vid="61">
+                            <svg class="w-8 h-8 text-pink-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="62"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" vid="63"></path></svg>
+                            <div class="w-24 h-2 bg-white/10 rounded mb-2" vid="64"></div>
+                            <div class="w-16 h-2 bg-white/10 rounded" vid="65"></div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce" vid="66">
+            <svg class="w-6 h-6 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="67">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" vid="68"></path>
+            </svg>
+        </div>
+    </section>
+
+    
+    <section id="about" class="py-24 bg-brand-dark relative z-10" vid="69">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8" vid="70">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start" vid="71">
+                <div class="lg:col-span-4 reveal" vid="72">
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold text-white mb-4" vid="73">
+                        Digitrix Overview
+                    </h2>
+                    <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" vid="74"></div>
+                </div>
+                <div class="lg:col-span-8 reveal delay-100" vid="75">
+                    <div class="prose prose-lg prose-invert text-gray-400 leading-relaxed" vid="76">
+                        <p class="text-xl text-white mb-6" vid="77">
+                            Digitrix LLC is a minority woman-owned company. Specializing in digital transformation, technology implementation, and strategic consulting for small businesses.
+                        </p>
+                        <p vid="78">
+                            We are problem solvers who are motivated by mission. We love building sustainable cutting-edge digital solutions. Our team brings deep expertise in cloud architecture, modern software development, and process optimization to help organizations navigate the complexities of the digital age.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-3 gap-6 mt-12" vid="79">
+                            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center hover:bg-white/10 transition-colors" vid="80">
+                                <div class="text-3xl font-display font-bold text-blue-400 mb-1" vid="81">100%</div>
+                                <div class="text-sm text-gray-500" vid="82">Mission Driven</div>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center hover:bg-white/10 transition-colors" vid="83">
+                                <div class="text-3xl font-display font-bold text-purple-400 mb-1" vid="84">Woman</div>
+                                <div class="text-sm text-gray-500" vid="85">Owned Business</div>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center hover:bg-white/10 transition-colors" vid="86">
+                                <div class="text-3xl font-display font-bold text-pink-400 mb-1" vid="87">Minority</div>
+                                <div class="text-sm text-gray-500" vid="88">Owned Enterprise</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="services" class="py-24 bg-[#0F1420] relative" vid="89">
+        <div class="absolute inset-0 bg-mesh opacity-30" vid="90"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10" vid="91">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal" vid="92">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6" vid="93">Digitrix Digital Portfolio</h2>
+                <p class="text-gray-400 text-lg" vid="94">Comprehensive solutions tailored for the modern enterprise, from cloud infrastructure to strategic process management.</p>
+            </div>
+
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" vid="95">
+                
+                
+                <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 reveal" vid="96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="97"></div>
+                    <div class="relative z-10" vid="98">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="99">
+                            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="100">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" vid="101"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="102">Cloud Solutions</h3>
+                        <ul class="space-y-4" vid="103">
+                            <li class="flex items-start gap-3" vid="104">
+                                <svg class="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="105"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="106"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="107">Solution Architecture</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="108">
+                                <svg class="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="109"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="110"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="111">Cloud Computing</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="112">
+                                <svg class="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="113"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="114"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="115">Migration &amp; Modernization</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-2 reveal delay-100" vid="116">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="117"></div>
+                    <div class="relative z-10" vid="118">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="119">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="120">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" vid="121"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="122">Software Development</h3>
+                        <ul class="space-y-4" vid="123">
+                            <li class="flex items-start gap-3" vid="124">
+                                <svg class="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="125"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="126"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="127">Application Development</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="128">
+                                <svg class="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="129"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="130"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="131">Cloud Native Development</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="132">
+                                <svg class="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="133"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="134"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="135">Serverless</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="136">
+                                <svg class="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="137"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="138"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="139">Low Code / No Code</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-pink-500/30 transition-all duration-500 hover:-translate-y-2 reveal delay-200" vid="140">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="141"></div>
+                    <div class="relative z-10" vid="142">
+                        <div class="w-16 h-16 rounded-2xl bg-pink-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="143">
+                            <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="144">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" vid="145"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="146">Process Management</h3>
+                        <ul class="space-y-4" vid="147">
+                            <li class="flex items-start gap-3" vid="148">
+                                <svg class="w-5 h-5 text-pink-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="149"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="150"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="151">Improve Effectiveness</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="152">
+                                <svg class="w-5 h-5 text-pink-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="153"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="154"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="155">Improve Productivity</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="156">
+                                <svg class="w-5 h-5 text-pink-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="157"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="158"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="159">Improve Quality</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="160">
+                                <svg class="w-5 h-5 text-pink-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="161"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="162"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="163">Optimize Impact</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-2 reveal" vid="164">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="165"></div>
+                    <div class="relative z-10" vid="166">
+                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="167">
+                            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="168">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" vid="169"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="170">Data &amp; Infrastructure</h3>
+                        <ul class="space-y-4" vid="171">
+                            <li class="flex items-start gap-3" vid="172">
+                                <svg class="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="173"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="174"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="175">Database Management</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="176">
+                                <svg class="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="177"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="178"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="179">Infrastructure as Code</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="180">
+                                <svg class="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="181"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="182"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="183">Security &amp; Compliance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 reveal delay-100" vid="184">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="185"></div>
+                    <div class="relative z-10" vid="186">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="187">
+                            
+                            <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="188">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z" vid="189"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12v6m0 0l-2-2m2 2l2-2" vid="190"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="191">Health &amp; Life Sciences</h3>
+                        <ul class="space-y-4" vid="192">
+                            <li class="flex items-start gap-3" vid="193">
+                                <svg class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="194"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="195"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="196">Health Tech Solutions</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="197">
+                                <svg class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="198"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="199"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="200">Research Data Systems</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="201">
+                                <svg class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="202"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="203"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="204">Compliance Tech</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                 
+                 <div class="group relative p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2 reveal delay-200" vid="205">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="206"></div>
+                    <div class="relative z-10" vid="207">
+                        <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500" vid="208">
+                            
+                            <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="209">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" vid="210"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-6" vid="211">Public Sector</h3>
+                        <ul class="space-y-4" vid="212">
+                            <li class="flex items-start gap-3" vid="213">
+                                <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="214"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="215"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="216">Government Solutions</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="217">
+                                <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="218"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="219"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="220">Public Health IT</span>
+                            </li>
+                            <li class="flex items-start gap-3" vid="221">
+                                <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="222"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" vid="223"></path></svg>
+                                <span class="text-gray-400 group-hover:text-gray-300 transition-colors" vid="224">Digital Governance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="py-24 relative overflow-hidden" vid="225">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-brand-dark" vid="226"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" vid="227"></div>
+        <div class="relative max-w-4xl mx-auto px-6 text-center reveal" vid="228">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold mb-8" vid="229">Ready to Transform?</h2>
+            <p class="text-gray-400 text-lg mb-10" vid="230">
+                Let's discuss how we can help reimagine your digital possibilities. Reach out to our team of experts today.
+            </p>
+            <form class="max-w-md mx-auto mb-12" vid="231">
+                <div class="flex gap-2" vid="232">
+                    <input type="email" placeholder="Enter your email" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-colors placeholder-gray-500" vid="233">
+                    <button type="button" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-colors" vid="234">
+                        Connect
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    
+    <footer class="border-t border-white/5 bg-brand-dark py-12" vid="235">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6" vid="236">
+            <div class="flex items-center gap-2" vid="237">
+                <svg class="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="238">
+                    <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.132 20.177 10.244 17.814 10.04C17.443 6.643 14.536 4 11 4C7.134 4 4 7.134 4 11C1.79 11.233 0 13.15 0 15.5C0 18.067 1.95 20.18 4.5 20.45" stroke="url(#footer-logo-gradient)" stroke-linecap="round" stroke-linejoin="round" vid="239"></path>
+                    <defs vid="240">
+                        <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse" vid="241">
+                            <stop offset="0%" stop-color="#3B82F6" vid="242"></stop>
+                            <stop offset="100%" stop-color="#EC4899" vid="243"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="text-lg font-display font-bold text-white" vid="244">Digitrix</span>
+            </div>
+            <div class="text-gray-500 text-sm" vid="245">
+                © 2024 Digitrix LLC. All rights reserved.
+            </div>
+            <div class="flex gap-6" vid="246">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors" vid="247">
+                    <span class="sr-only" vid="248">LinkedIn</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" vid="249"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" vid="250"></path></svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors" vid="251">
+                    <span class="sr-only" vid="252">Twitter</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" vid="253"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" vid="254"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script vid="255">
+        
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        
+        reveal();
+
+        
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg');
+                nav.classList.replace('bg-brand-dark/80', 'bg-brand-dark/95');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.replace('bg-brand-dark/95', 'bg-brand-dark/80');
+            }
+        });
+        
+        
+        document.querySelectorAll('.animate-float').forEach(el => {
+            el.style.animationDelay = Math.random() + 's';
+        });
+    </script>
+
+</body></html>
